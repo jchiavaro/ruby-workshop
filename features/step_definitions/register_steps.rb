@@ -1,5 +1,6 @@
 Given /I am on the home page/ do
   visit("/")
+  page.should have_content("create new user")
 end
 
 When /I follow register user/ do

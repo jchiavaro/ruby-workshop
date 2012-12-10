@@ -1,13 +1,16 @@
-ENV['RACK_ENV'] = 'test'
+require "capybara"
+require "capybara/cucumber"
+require "rspec"
+require File.dirname(__FILE__) + '/../../app'
 
-require 'rubygems'
-require 'rack/test'
-require 'rspec/expectations'
-require 'webrat'
-Webrat.configure do |config|
-    config.mode = :sinatra
+Capybara.app = App
+
+class AppWorld
+  include Capybara::DSL
+  include RSpec::Expectations
+  include RSpec::Matchers
 end
 
 World do
-    Webrat::SinatraSession.new
+  AppWorld.new
 end
