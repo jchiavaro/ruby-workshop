@@ -1,0 +1,11 @@
+%html
+  %head
+    %title register new user
+  %body
+    %h1 register new user
+    %form#form1( method = "post" action = "/register" )
+      %label Email address
+      %input#username(type = "text" name = "username")
+      %label Password
+      %input#password(type = "text" name = "password")
+      %button#register_user Register
