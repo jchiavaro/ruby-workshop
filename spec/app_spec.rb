@@ -1,6 +1,5 @@
 require "spec_helper"
 
-
 describe App do
 
   describe "GET /" do
@@ -9,7 +8,6 @@ describe App do
       last_response.body.should =~/home site/
     end
   end
-  
   describe "GET /add_user" do
     it "should render the add user page" do
       get "/add_user"
@@ -20,9 +18,9 @@ describe App do
   describe "POST /register" do
     let(:username) {"someuser@domain.com"}
     let(:password) { "super_secret" }
-    it "should save the user" do
+    it "should register the user" do
       post "/register", {username: username, password: password }
-      last_response.body.should =~ /User #{username} created successfully/
+      last_response.status.should == 200
     end
   end
 end

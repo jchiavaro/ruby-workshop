@@ -4,9 +4,26 @@ require "sinatra"
 require "haml"
 require 'user_mapper'
 require 'user'
+require "active_record"
+
+ActiveRecord::Base.establish_connection(
+  :adapter => "sqlite3",
+  :dbfile  => ":memory:",
+  :database => "user.db"
+)
+
+if !ActiveRecord::Base.connection.table_exists? 'users'
+
+  ActiveRecord::Schema.define do
+    create_table :users do |table|
+      table.column :id, :integer
+      table.column :username, :string
+      table.column :password, :string
+    end
+  end
+end
 
 class App < Sinatra::Base
- 
   get "/" do
     haml :index
   end
@@ -16,8 +33,7 @@ class App < Sinatra::Base
   end
 
   post "/register" do
-    @user = User.new( params[:username], params[:password])
-    UserMapper.new.save(@user)
+    @user = User.create( username: params[:username], password: params[:password])
     haml :success
   end
 end
