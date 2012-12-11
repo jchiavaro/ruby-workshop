@@ -20,6 +20,9 @@ describe App do
     let(:password) { "super_secret" }
     it "should register the user" do
       post "/register", {username: username, password: password }
+      user = double("user")
+      User.stub(:create){ user }
+      user.should_not be_nil
       last_response.status.should == 200
     end
   end

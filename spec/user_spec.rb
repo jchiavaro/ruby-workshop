@@ -7,9 +7,8 @@ describe User do
     let(:username){"Matias"}
     let(:password){"1234"}
 
-    it "should save a new user" do
+    it "#create" do
       user = User.create( :username => username, :password => password )
-      another_user =  User.where({:username => username})
       user.should_not be_nil
     end
   end
