@@ -1,7 +1,7 @@
 Feature: User can register to the site
 
 Scenario: Add user
-    Given I am on the home page
+    Given I am on the homepage
     When I follow register user
     Then I should be on the register user page
     When I fill in username with "newuser@ruby.org" and password with "top_secret"

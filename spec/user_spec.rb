@@ -15,13 +15,4 @@ describe User do
       user.should_not be_nil
     end
   end
-
-  describe "#all" do
-    it "should get all users" do
-      user1 = User.create(username: "user1")
-      user2 = User.create(username: "user2")
-      users_from_db = User.all
-      users_from_db.should have(2).elements
-    end
-  end
 end
