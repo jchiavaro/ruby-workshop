@@ -19,7 +19,7 @@ When /I fill in username with (.+) and password with (.+)/ do |user, pass|
 end
 
 And /I press Register/ do
-  click_button("Register")
+  click_button("register")
 end
 
 Then /I should see the message (.+) created successfully/ do |username|

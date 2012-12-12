@@ -2,7 +2,6 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "app"))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "domain"))
 require "sinatra"
 require "haml"
-require 'user_mapper'
 require 'user'
 require "active_record"
 
