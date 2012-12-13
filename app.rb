@@ -36,4 +36,9 @@ class App < Sinatra::Base
     @user = User.create( username: params[:username], password: params[:password])
     haml :success
   end
+
+  get "/view_users" do
+    @users = User.all
+    haml :view_users
+  end
 end
